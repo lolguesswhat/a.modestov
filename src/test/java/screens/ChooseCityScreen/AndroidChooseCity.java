@@ -12,6 +12,10 @@ public class AndroidChooseCity extends ChooseCityScreen{
     public AndroidChooseCity() {
         super(id("com.zdv.secretcloset:id/etSearchTest"));
     }
+    @Override
+    protected By getDontShowAgainBtn() {
+        return id("android:id/button2");
+    }
 
     @Override
     protected By getSearchTbx() {

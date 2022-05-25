@@ -6,13 +6,13 @@ import org.openqa.selenium.By;
 
 @ScreenType(platform = PlatformName.ANDROID)
 public class AndroidSellerScreen extends SellerScreen{
-    protected AndroidSellerScreen() {
-        super(By.xpath(""));
+    public AndroidSellerScreen() {
+        super(By.xpath("//*[@resource-id='com.zdv.secretcloset:id/toolbar']/android.widget.TextView"));
     }
 
     @Override
     protected By getSellerNameBtn() {
-        return By.id("");
+        return By.xpath("//*[@resource-id='com.zdv.secretcloset:id/toolbar']/android.widget.TextView");
     }
 
     @Override
