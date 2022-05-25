@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import screens.ChooseCityScreen.ChooseCityScreen;
 import screens.MainScreen.MainScreen;
 import screens.ProductScreen.ProductScreen;
+import screens.SellerScreen.SellerScreen;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -84,7 +85,16 @@ public class Task1 extends BaseTest {
     Assert.assertEquals(oldPrice, " ", "");
 
     //Step 8. Click on seller
+    String sellerName = productScreen.getSellerNameBtnText();
+    String sellerCity = productScreen.getSellerCityBtnText();
+    productScreen.tapSellerNameBtn();
+    SellerScreen sellerScreen = AqualityServices.getScreenFactory().getScreen(SellerScreen.class);
+    Assert.assertNotNull(sellerScreen, "");
+
     //Step 9. Check that seller information is correct (name, city)
+    Assert.assertEquals(sellerName, sellerScreen.getSellerNameBtnText(), "");
+    Assert.assertEquals(sellerCity, sellerScreen.getSellerCityBtnText(), "");
+
 
 
 

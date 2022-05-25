@@ -12,12 +12,12 @@ public class AndroidProductScreen extends ProductScreen {
 
     @Override
     protected By getOldPriceBtn() {
-        return //TODO;
+        return By.xpath("");
     }
 
     @Override
     protected By getDiscountBtn() {
-        return //TODO;
+        return By.xpath("");
     }
 
     @Override
@@ -28,5 +28,15 @@ public class AndroidProductScreen extends ProductScreen {
     @Override
     protected By getBrandBtn() {
         return By.xpath("//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvItemBrand']");
+    }
+
+    @Override
+    protected By getSellerNameBtn() {
+        return By.id("com.zdv.secretcloset:id/tvItemSellerName");
+    }
+
+    @Override
+    protected By getSellerCityBtn() {
+        return By.id("com.zdv.secretcloset:id/tvItemSellerCity");
     }
 }
