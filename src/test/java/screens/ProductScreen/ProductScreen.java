@@ -8,23 +8,23 @@ import org.openqa.selenium.By;
 public abstract class ProductScreen extends Screen {
     protected final IButton oldPriceBtn;
     protected final IButton discountBtn;
-    protected final IButton salePriceBtn;
+    protected final IButton priceWithDiscountBtn;
     protected final IButton brandBtn;
     protected final IButton sellerNameBtn;
     protected final IButton sellerCityBtn;
     protected ProductScreen(By locator) {
         super(locator, "Product Screen");
-        oldPriceBtn = AqualityServices.getElementFactory().getButton(getOldPriceBtn(), "");
-        discountBtn = AqualityServices.getElementFactory().getButton(getDiscountBtn(), "");
-        salePriceBtn = AqualityServices.getElementFactory().getButton(getSalePriceBtn(), "Sale Price Button");
+        oldPriceBtn = AqualityServices.getElementFactory().getButton(getOldPriceBtn(), "Old Price Button");
+        discountBtn = AqualityServices.getElementFactory().getButton(getDiscountBtn(), "Discount Button");
+        priceWithDiscountBtn = AqualityServices.getElementFactory().getButton(getPriceWithDiscountBtn(), "Price With Discount Button");
         brandBtn = AqualityServices.getElementFactory().getButton(getBrandBtn(), "Brand Button");
-        sellerNameBtn = AqualityServices.getElementFactory().getButton(getSellerNameBtn(), "");
-        sellerCityBtn =AqualityServices.getElementFactory().getButton(getSellerCityBtn(), "");
+        sellerNameBtn = AqualityServices.getElementFactory().getButton(getSellerNameBtn(), "Seller Name Button");
+        sellerCityBtn =AqualityServices.getElementFactory().getButton(getSellerCityBtn(), "Seller City Button");
     }
 
     protected abstract By getOldPriceBtn();
     protected abstract By getDiscountBtn();
-    protected abstract By getSalePriceBtn();
+    protected abstract By getPriceWithDiscountBtn();
     protected abstract By getBrandBtn();
     protected abstract By getSellerNameBtn();
     protected abstract By getSellerCityBtn();
@@ -36,8 +36,8 @@ public abstract class ProductScreen extends Screen {
     public String getDiscountBtnText() {
         return discountBtn.getText();
     }
-    public String getSalePriceBtnText() {
-        return salePriceBtn.getText();
+    public String getPriceWithDiscountBtnText() {
+        return priceWithDiscountBtn.getText();
     }
     public String getBrandBtnText() {
         return brandBtn.getText();

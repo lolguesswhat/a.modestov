@@ -11,7 +11,7 @@
         "platformName": "Android",
         "automationName": "UiAutomator2",
         "deviceName": "Redmi Note 7",
-        "udid": "emulator-5554",
+        "udid": "94e4ca68",
         "platformVersion": "10"
       }
     },

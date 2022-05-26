@@ -45,8 +45,8 @@ public abstract class MainScreen extends Screen {
     public String getChooseCityBtnText() {
         return chooseCityBtn.getText();
     }
-    public void waitForCityToChange() {
-        new WebDriverWait(AqualityServices.getApplication().getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.attributeToBe(getChooseCityBtn(), "text", "Madrid"));
+    public void waitForCityToChange(String requiredCity) {
+        new WebDriverWait(AqualityServices.getApplication().getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.attributeToBe(getChooseCityBtn(), "text", requiredCity));
     }
 
     public String getBrandBtnText() {

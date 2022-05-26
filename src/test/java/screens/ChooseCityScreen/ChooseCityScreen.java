@@ -4,7 +4,6 @@ import aquality.appium.mobile.elements.interfaces.IButton;
 import aquality.appium.mobile.elements.interfaces.ITextBox;
 import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
-import screens.MainScreen.MainScreen;
 
 public abstract class ChooseCityScreen extends Screen {
     protected final IButton dontShowAgainBtn;

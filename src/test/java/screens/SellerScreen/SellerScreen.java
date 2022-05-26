@@ -10,8 +10,8 @@ public abstract class SellerScreen extends Screen {
     protected final IButton sellerCityBtn;
     protected SellerScreen(By locator) {
         super(locator, "Seller Screen");
-        sellerNameBtn = AqualityServices.getElementFactory().getButton(getSellerNameBtn(), "");
-        sellerCityBtn = AqualityServices.getElementFactory().getButton(getSellerCityBtn(), "");
+        sellerNameBtn = AqualityServices.getElementFactory().getButton(getSellerNameBtn(), "Seller Name Button");
+        sellerCityBtn = AqualityServices.getElementFactory().getButton(getSellerCityBtn(), "Seller City Button");
     }
 
     protected abstract By getSellerNameBtn();

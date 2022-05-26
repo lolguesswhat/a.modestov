@@ -7,27 +7,27 @@ import org.openqa.selenium.By;
 @ScreenType(platform = PlatformName.ANDROID)
 public class AndroidProductScreen extends ProductScreen {
     public AndroidProductScreen() {
-        super(By.xpath("//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvItemPrice']"));
+        super(By.id("com.zdv.secretcloset:id/tvItemPrice"));
     }
 
     @Override
     protected By getOldPriceBtn() {
-        return By.xpath("");
+        return By.id("com.zdv.secretcloset:id/tvItemOriginalPrice");
     }
 
     @Override
     protected By getDiscountBtn() {
-        return By.xpath("");
+        return By.id("com.zdv.secretcloset:id/tvItemDiscount");
     }
 
     @Override
-    protected By getSalePriceBtn() {
-        return By.xpath("//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvItemPrice']");
+    protected By getPriceWithDiscountBtn() {
+        return By.id("com.zdv.secretcloset:id/tvItemPrice");
     }
 
     @Override
     protected By getBrandBtn() {
-        return By.xpath("//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvItemBrand']");
+        return By.id("com.zdv.secretcloset:id/tvItemBrand");
     }
 
     @Override
