@@ -3,6 +3,7 @@ package tests;
 import aquality.appium.mobile.application.AqualityServices;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
+import models.ProductModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import screens.ChooseCityScreen.ChooseCityScreen;
@@ -11,12 +12,12 @@ import screens.ProductScreen.ProductScreen;
 import screens.SellerScreen.SellerScreen;
 
 
-public class Task1 extends BaseTest {
+public class Task1 {
     private static final ISettingsFile testData = new JsonSettingsFile("testData.json");
     private static final String CITY_TO_CHOOSE = testData.getValue("/cityToChoose").toString();
 
     @Test
-    public void test2() {
+    public void test1() {
         //Step 1 Click on city label
         MainScreen mainScreen = AqualityServices.getScreenFactory().getScreen(MainScreen.class);
         Assert.assertTrue(mainScreen.state().isDisplayed(), "Main Screen is not displayed");
@@ -39,6 +40,11 @@ public class Task1 extends BaseTest {
         Assert.assertEquals(mainScreen.getChooseCityBtnText(), CITY_TO_CHOOSE, "Required region does not match required value");
 
         //Step 5. Select first item with discount
+        ProductModel productFromListCityScreen = new ProductModel();
+        productFromListCityScreen.setBrand(mainScreen.getBrandBtnText());
+        productFromListCityScreen.setOriginalPrice(mainScreen.getBrandBtnText());
+        productFromListCityScreen.setDiscount(mainScreen.getBrandBtnText());
+        productFromListCityScreen.setPriceWithDiscount(mainScreen.getBrandBtnText());
         String brandName = mainScreen.getBrandBtnText();
         String oldPrice = mainScreen.getOldPriceBtnText();
         String discount = mainScreen.getDiscountBtnText();
@@ -47,7 +53,17 @@ public class Task1 extends BaseTest {
         ProductScreen productScreen = AqualityServices.getScreenFactory().getScreen(ProductScreen.class);
         Assert.assertNotNull(productScreen, "Product Screen is not displayed");
 
-        //Step 6
+        //Step 6 and 7
+        ProductModel productFromProductScreen = new ProductModel();
+        productFromProductScreen.setBrand(productScreen.getBrandBtnText());
+        productFromProductScreen.setOriginalPrice(productScreen.getOldPriceBtnText());
+        productFromProductScreen.setDiscount(productScreen.getDiscountBtnText());
+        productFromProductScreen.setPriceWithDiscount(productScreen.getPriceWithDiscountBtnText());
+        Assert.assertEquals(productFromListCityScreen, productFromProductScreen);
+
+
+
+
         Assert.assertEquals(productScreen.getBrandBtnText(), brandName, "Brand Name does not match previous value");
 
         //Step 7 Check that old price, discount and price with discount are correct
@@ -65,5 +81,13 @@ public class Task1 extends BaseTest {
         //Step 9. Check that seller information is correct (name, city)
         Assert.assertEquals(sellerName, sellerScreen.getSellerNameBtnText(), "Seller name does not match previous value");
         Assert.assertEquals(sellerCity, sellerScreen.getSellerCityBtnText(), "Seller city does not match previous value");
+    }
+    @Test
+    public void test2() {
+        ProductModel p1 = new ProductModel();
+        ProductModel p2 = p1;
+        p1.setBrand("qwert1y");
+        p2.setBrand("qwert1fy");
+        System.out.println(p1.getBrand());
     }
 }
