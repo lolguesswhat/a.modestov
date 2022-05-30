@@ -1,56 +1,63 @@
 package screens.ProductScreen;
 
 import aquality.appium.mobile.application.AqualityServices;
+import aquality.appium.mobile.elements.ElementType;
 import aquality.appium.mobile.elements.interfaces.IButton;
+import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
+import models.ProductModel;
 import org.openqa.selenium.By;
 
 public abstract class ProductScreen extends Screen {
-    protected final IButton oldPriceBtn;
-    protected final IButton discountBtn;
-    protected final IButton priceWithDiscountBtn;
-    protected final IButton brandBtn;
-    protected final IButton sellerNameBtn;
-    protected final IButton sellerCityBtn;
+
+    protected final ILabel originalPriceTextView;
+    protected final ILabel discountTextView;
+    protected final ILabel priceWithDiscountTextView;
+    protected final ILabel brandTextView;
+    protected final ILabel sellerNameBtn;
+    protected final ILabel sellerCityBtn;
+
     protected ProductScreen(By locator) {
         super(locator, "Product Screen");
-        oldPriceBtn = AqualityServices.getElementFactory().getButton(getOldPriceBtn(), "Old Price Button");
-        discountBtn = AqualityServices.getElementFactory().getButton(getDiscountBtn(), "Discount Button");
-        priceWithDiscountBtn = AqualityServices.getElementFactory().getButton(getPriceWithDiscountBtn(), "Price With Discount Button");
-        brandBtn = AqualityServices.getElementFactory().getButton(getBrandBtn(), "Brand Button");
-        sellerNameBtn = AqualityServices.getElementFactory().getButton(getSellerNameBtn(), "Seller Name Button");
-        sellerCityBtn =AqualityServices.getElementFactory().getButton(getSellerCityBtn(), "Seller City Button");
+        originalPriceTextView = AqualityServices.getElementFactory().getLabel(getOriginalPriceTextView(), "Old Price Button");
+        discountTextView = AqualityServices.getElementFactory().getLabel(getDiscountTextView(), "Discount Button");
+        priceWithDiscountTextView = AqualityServices.getElementFactory().getLabel(getPriceWithDiscountTextView(), "Price With Discount Button");
+        brandTextView = AqualityServices.getElementFactory().getLabel(getBrandTextView(), "Brand Button");
+        sellerNameBtn = AqualityServices.getElementFactory().getLabel(getSellerNameBtn(), "Seller Name Button");
+        sellerCityBtn = AqualityServices.getElementFactory().getLabel(getSellerCityBtn(), "Seller City Button");
     }
 
-    protected abstract By getOldPriceBtn();
-    protected abstract By getDiscountBtn();
-    protected abstract By getPriceWithDiscountBtn();
-    protected abstract By getBrandBtn();
+    protected abstract By getOriginalPriceTextView();
+
+    protected abstract By getDiscountTextView();
+
+    protected abstract By getPriceWithDiscountTextView();
+
+    protected abstract By getBrandTextView();
+
     protected abstract By getSellerNameBtn();
+
     protected abstract By getSellerCityBtn();
 
-
-    public String getOldPriceBtnText() {
-        return oldPriceBtn.getText();
-    }
-    public String getDiscountBtnText() {
-        return discountBtn.getText();
-    }
-    public String getPriceWithDiscountBtnText() {
-        return priceWithDiscountBtn.getText();
-    }
-    public String getBrandBtnText() {
-        return brandBtn.getText();
-    }
     public String getSellerNameBtnText() {
         return sellerNameBtn.getText();
     }
+
     public ProductScreen tapSellerNameBtn() {
         sellerNameBtn.click();
         return this;
     }
+
     public String getSellerCityBtnText() {
         return sellerCityBtn.getText();
     }
 
+    public ProductModel getProductInfo() {
+        ProductModel productModel = new ProductModel();
+        productModel.setBrand(brandTextView.getText());
+        productModel.setOriginalPrice(originalPriceTextView.getText());
+        productModel.setDiscount(discountTextView.getText());
+        productModel.setPriceWithDiscount(priceWithDiscountTextView.getText());
+        return productModel;
+    }
 }

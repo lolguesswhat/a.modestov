@@ -6,24 +6,26 @@ import aquality.appium.mobile.screens.Screen;
 import org.openqa.selenium.By;
 
 public abstract class ChooseCityScreen extends Screen {
-    protected final IButton dontShowAgainBtn;
+
+    private final IButton dontShowAgainBtn;
     private final ITextBox searchTbx;
-    private final IButton cityToChooseBtn;
 
     protected ChooseCityScreen(By locator) {
         super(locator, "Choose City Screen");
         dontShowAgainBtn = getElementFactory().getButton(getDontShowAgainBtn(), "Don't Show Again Button");
         searchTbx = getElementFactory().getTextBox(getSearchTbx(), "Search TextBox");
-        cityToChooseBtn = getElementFactory().getButton(getCityToChooseBtn(), "City to Choose Button");
     }
 
     protected abstract By getDontShowAgainBtn();
-    protected abstract By getSearchTbx();
-    protected abstract By getCityToChooseBtn();
 
-    public Boolean isDontShowAgainBtnDisplayed() {
-        return dontShowAgainBtn.state().isDisplayed();
+    protected abstract By getSearchTbx();
+
+    protected abstract By getCityToChooseBtn(String city);
+
+    public boolean isDontShowAgainBtnDisplayed() {
+        return dontShowAgainBtn.state().waitForDisplayed();
     }
+
     public ChooseCityScreen tapDontShowAgainBtn() {
         dontShowAgainBtn.click();
         return this;
@@ -34,8 +36,8 @@ public abstract class ChooseCityScreen extends Screen {
         return this;
     }
 
-    public ChooseCityScreen tapCityToChooseBtn() {
-        cityToChooseBtn.click();
+    public ChooseCityScreen tapCityToChooseBtn(String city) {
+        getElementFactory().getButton(getCityToChooseBtn(city), "City to Choose Button").click();
         return this;
     }
 }

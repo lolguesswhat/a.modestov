@@ -14,34 +14,34 @@ public class AndroidMainScreen extends MainScreen {
     }
 
     @Override
-    protected By getChooseCityBtn() {
+    protected By getChooseCityBtnLoc() {
         return id("com.zdv.secretcloset:id/tvToolbarCity");
     }
 
 
     @Override
-    protected By getBrandNameBtn() {
-        return xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.RelativeLayout//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvBrand']");
+    protected By getBrandNameLblLoc() {
+        return By.xpath("//*[@resource-id='com.zdv.secretcloset:id/tvBrand']");
     }
 
     @Override
-    protected By getOldPriceBtn() {
-        return By.xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.RelativeLayout//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvSumm']");
+    protected By getOriginalPriceLblLoc() {
+        return By.id("com.zdv.secretcloset:id/tvSumm");
     }
 
     @Override
-    protected By getDiscountBtn() {
-        return By.xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.RelativeLayout//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvDiscount']");
+    protected By getDiscountLblLoc() {
+        return By.id("com.zdv.secretcloset:id/tvDiscount");
     }
 
     @Override
-    protected By getPriceWithDiscountBtn() {
-        return By.xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.RelativeLayout//android.widget.TextView[@resource-id='com.zdv.secretcloset:id/tvPrice']");
+    protected By getPriceWithDiscountLblLoc() {
+        return By.id("com.zdv.secretcloset:id/tvPrice");
     }
 
     @Override
     protected By getProductBtn() {
-        return By.xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout[1]");
+        return By.xpath("//android.support.v7.widget.RecyclerView/android.widget.RelativeLayout");
     }
 
 }

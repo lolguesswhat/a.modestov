@@ -23,7 +23,7 @@ public class AndroidChooseCity extends ChooseCityScreen{
     }
 
     @Override
-    protected By getCityToChooseBtn() {
-        return xpath("//android.widget.TextView[@text='Madrid']");
+    protected By getCityToChooseBtn(String city) {
+        return xpath(String.format("//android.widget.TextView[@text='%s']", city));
     }
 }
