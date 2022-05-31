@@ -12,7 +12,6 @@ import screens.MainScreen.MainScreen;
 import screens.ProductScreen.ProductScreen;
 import screens.SellerScreen.SellerScreen;
 
-
 public class AppiumTest extends BaseTest {
 
     private static final ISettingsFile testData = new JsonSettingsFile("testData.json");
