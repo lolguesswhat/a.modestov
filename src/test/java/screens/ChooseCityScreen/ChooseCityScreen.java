@@ -26,7 +26,7 @@ public abstract class ChooseCityScreen extends Screen {
         return doNotShowAgainBtn.state().waitForDisplayed();
     }
 
-    public ChooseCityScreen tapDontShowAgainBtn() {
+    public ChooseCityScreen tapDoNotShowAgainBtn() {
         doNotShowAgainBtn.click();
         return this;
     }

@@ -26,7 +26,7 @@ public class AppiumTest extends BaseTest {
         mainScreen.tapChooseCityBtn();
         ChooseCityScreen chooseCityScreen = AqualityServices.getScreenFactory().getScreen(ChooseCityScreen.class);
         Assert.assertTrue(chooseCityScreen.isDoNotShowAgainBtnDisplayed(), "Pop-Up has not shown up");
-        chooseCityScreen.tapDontShowAgainBtn();
+        chooseCityScreen.tapDoNotShowAgainBtn();
         Assert.assertFalse(chooseCityScreen.isDoNotShowAgainBtnDisplayed(), "Pop-Up has not disappeared");
         Assert.assertTrue(chooseCityScreen.state().isDisplayed(), "Choose City Screen in not displayed");
 
