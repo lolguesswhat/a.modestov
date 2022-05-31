@@ -6,37 +6,38 @@ import org.openqa.selenium.By;
 
 @ScreenType(platform = PlatformName.ANDROID)
 public class AndroidProductScreen extends ProductScreen {
+
     public AndroidProductScreen() {
-        super(By.id("com.zdv.secretcloset:id/tvItemPrice"));
+        super(By.id("tvAdditionalId"));
     }
 
     @Override
-    protected By getOriginalPriceTextView() {
-        return By.id("com.zdv.secretcloset:id/tvItemOriginalPrice");
+    protected By getOriginalPriceLblLoc() {
+        return By.id("tvItemOriginalPrice");
     }
 
     @Override
-    protected By getDiscountTextView() {
-        return By.id("com.zdv.secretcloset:id/tvItemDiscount");
+    protected By getDiscountLblLoc() {
+        return By.id("tvItemDiscount");
     }
 
     @Override
-    protected By getPriceWithDiscountTextView() {
-        return By.id("com.zdv.secretcloset:id/tvItemPrice");
+    protected By getPriceWithDiscountLblLoc() {
+        return By.id("tvItemPrice");
     }
 
     @Override
-    protected By getBrandTextView() {
-        return By.id("com.zdv.secretcloset:id/tvItemBrand");
+    protected By getBrandNameLblLoc() {
+        return By.id("tvItemBrand");
     }
 
     @Override
-    protected By getSellerNameBtn() {
-        return By.id("com.zdv.secretcloset:id/tvItemSellerName");
+    protected By getSellerNameLblLoc() {
+        return By.id("tvItemSellerName");
     }
 
     @Override
-    protected By getSellerCityBtn() {
-        return By.id("com.zdv.secretcloset:id/tvItemSellerCity");
+    protected By getSellerCityLblLoc() {
+        return By.id("tvItemSellerCity");
     }
 }

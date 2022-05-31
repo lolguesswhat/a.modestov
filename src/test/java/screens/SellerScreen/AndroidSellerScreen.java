@@ -2,21 +2,24 @@ package screens.SellerScreen;
 
 import aquality.appium.mobile.application.PlatformName;
 import aquality.appium.mobile.screens.screenfactory.ScreenType;
+import constants.Constants;
 import org.openqa.selenium.By;
 
 @ScreenType(platform = PlatformName.ANDROID)
-public class AndroidSellerScreen extends SellerScreen{
+public class AndroidSellerScreen extends SellerScreen {
+
     public AndroidSellerScreen() {
-        super(By.xpath("//*[@resource-id='com.zdv.secretcloset:id/toolbar']/android.widget.TextView"));
+        super(By.id("ivSellerAvatar"));
     }
 
     @Override
-    protected By getSellerNameBtn() {
-        return By.xpath("//*[@resource-id='com.zdv.secretcloset:id/toolbar']/android.widget.TextView");
+    protected By getSellerNameLblLoc() {
+        return By.xpath(String.format("//android.view.ViewGroup[@resource-id='com.zdv.secretcloset:id/toolbar']/%s",
+                Constants.TEXT_VIEW));
     }
 
     @Override
-    protected By getSellerCityBtn() {
-        return By.id("com.zdv.secretcloset:id/tvItemSellerCity");
+    protected By getSellerCityLblLoc() {
+        return By.id("tvItemSellerCity");
     }
 }

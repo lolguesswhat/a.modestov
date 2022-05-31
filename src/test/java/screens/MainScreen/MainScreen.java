@@ -5,6 +5,7 @@ import aquality.appium.mobile.elements.ElementType;
 import aquality.appium.mobile.elements.interfaces.IButton;
 import aquality.appium.mobile.elements.interfaces.ILabel;
 import aquality.appium.mobile.screens.Screen;
+import constants.Constants;
 import models.ProductModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +20,7 @@ public abstract class MainScreen extends Screen {
     private final ILabel originalPriceLbl;
     private final ILabel discountLbl;
     private final ILabel priceWithDiscountLbl;
-    private final IButton productBtn;
+    private final IButton productBtnLoc;
 
     protected MainScreen(By locator) {
         super(locator, "Main Screen");
@@ -28,7 +29,7 @@ public abstract class MainScreen extends Screen {
         originalPriceLbl = getElementFactory().getLabel(getOriginalPriceLblLoc(), "Old Price");
         discountLbl = getElementFactory().getLabel(getDiscountLblLoc(), "Discount");
         priceWithDiscountLbl = getElementFactory().getLabel(getPriceWithDiscountLblLoc(), "Price With Discount");
-        productBtn = getElementFactory().getButton(getProductBtn(), "Product Button");
+        productBtnLoc = getElementFactory().getButton(getProductBtnLoc(), "Product Button");
     }
 
     protected abstract By getChooseCityBtnLoc();
@@ -41,7 +42,7 @@ public abstract class MainScreen extends Screen {
 
     protected abstract By getPriceWithDiscountLblLoc();
 
-    protected abstract By getProductBtn();
+    protected abstract By getProductBtnLoc();
 
     public MainScreen tapChooseCityBtn() {
         chooseCityBtn.click();
@@ -53,17 +54,21 @@ public abstract class MainScreen extends Screen {
     }
 
     public void waitForCityToChange(String requiredCity) {
-        new WebDriverWait(AqualityServices.getApplication().getDriver(), Duration.ofSeconds(3)).until(ExpectedConditions.attributeToBe(getChooseCityBtnLoc(), "text", requiredCity));
+        new WebDriverWait(AqualityServices.getApplication().getDriver(),
+                Duration.ofSeconds(Constants.WAIT_FOR_CITY_TO_CHANGE_TIMEOUT))
+                .until(ExpectedConditions.attributeToBe(getChooseCityBtnLoc(), "text", requiredCity));
     }
 
     public MainScreen tapProductBtn(int index) {
-        IButton product = (IButton) AqualityServices.getElementFactory().findElements(getProductBtn(), ElementType.BUTTON).get(--index);
+        IButton product = (IButton) AqualityServices.getElementFactory().findElements(getProductBtnLoc(),
+                ElementType.BUTTON).get(--index);
         product.click();
         return this;
     }
 
     public ProductModel getProductInfo(int index) {
-        IButton product = (IButton) AqualityServices.getElementFactory().findElements(getProductBtn(), ElementType.BUTTON).get(--index);
+        IButton product = (IButton) AqualityServices.getElementFactory().findElements(getProductBtnLoc(),
+                ElementType.BUTTON).get(--index);
         ProductModel productModel = new ProductModel();
         productModel.setBrand(product.findChildElement(getBrandNameLblLoc(), ElementType.BUTTON).getText());
         productModel.setOriginalPrice(product.findChildElement(getOriginalPriceLblLoc(), ElementType.BUTTON).getText());

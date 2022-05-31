@@ -7,27 +7,27 @@ import org.openqa.selenium.By;
 
 public abstract class ChooseCityScreen extends Screen {
 
-    private final IButton dontShowAgainBtn;
+    private final IButton doNotShowAgainBtn;
     private final ITextBox searchTbx;
 
     protected ChooseCityScreen(By locator) {
         super(locator, "Choose City Screen");
-        dontShowAgainBtn = getElementFactory().getButton(getDontShowAgainBtn(), "Don't Show Again Button");
-        searchTbx = getElementFactory().getTextBox(getSearchTbx(), "Search TextBox");
+        doNotShowAgainBtn = getElementFactory().getButton(getDoNotShowAgainBtnLoc(), "Don't Show Again Button");
+        searchTbx = getElementFactory().getTextBox(getSearchTbxLoc(), "Search TextBox");
     }
 
-    protected abstract By getDontShowAgainBtn();
+    protected abstract By getDoNotShowAgainBtnLoc();
 
-    protected abstract By getSearchTbx();
+    protected abstract By getSearchTbxLoc();
 
-    protected abstract By getCityToChooseBtn(String city);
+    protected abstract By getCityToChooseBtnLoc(String city);
 
-    public boolean isDontShowAgainBtnDisplayed() {
-        return dontShowAgainBtn.state().waitForDisplayed();
+    public boolean isDoNotShowAgainBtnDisplayed() {
+        return doNotShowAgainBtn.state().waitForDisplayed();
     }
 
     public ChooseCityScreen tapDontShowAgainBtn() {
-        dontShowAgainBtn.click();
+        doNotShowAgainBtn.click();
         return this;
     }
 
@@ -36,8 +36,8 @@ public abstract class ChooseCityScreen extends Screen {
         return this;
     }
 
-    public ChooseCityScreen tapCityToChooseBtn(String city) {
-        getElementFactory().getButton(getCityToChooseBtn(city), "City to Choose Button").click();
+    public ChooseCityScreen tapSearchBtn(String city) {
+        getElementFactory().getButton(getCityToChooseBtnLoc(city), "City to Choose Button").click();
         return this;
     }
 }
