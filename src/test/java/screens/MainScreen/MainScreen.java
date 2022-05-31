@@ -20,7 +20,7 @@ public abstract class MainScreen extends Screen {
     private final ILabel originalPriceLbl;
     private final ILabel discountLbl;
     private final ILabel priceWithDiscountLbl;
-    private final IButton productBtnLoc;
+    private final IButton productBtn;
 
     protected MainScreen(By locator) {
         super(locator, "Main Screen");
@@ -29,7 +29,7 @@ public abstract class MainScreen extends Screen {
         originalPriceLbl = getElementFactory().getLabel(getOriginalPriceLblLoc(), "Old Price");
         discountLbl = getElementFactory().getLabel(getDiscountLblLoc(), "Discount");
         priceWithDiscountLbl = getElementFactory().getLabel(getPriceWithDiscountLblLoc(), "Price With Discount");
-        productBtnLoc = getElementFactory().getButton(getProductBtnLoc(), "Product Button");
+        productBtn = getElementFactory().getButton(getProductBtnLoc(), "Product Button");
     }
 
     protected abstract By getChooseCityBtnLoc();
