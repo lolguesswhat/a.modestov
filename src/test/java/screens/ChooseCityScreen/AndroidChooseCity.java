@@ -2,7 +2,6 @@ package screens.ChooseCityScreen;
 
 import aquality.appium.mobile.application.PlatformName;
 import aquality.appium.mobile.screens.screenfactory.ScreenType;
-import constants.Constants;
 import org.openqa.selenium.By;
 
 import static org.openqa.selenium.By.id;
@@ -27,6 +26,6 @@ public class AndroidChooseCity extends ChooseCityScreen {
 
     @Override
     protected By getCityToChooseBtnLoc(String city) {
-        return xpath(String.format("//%s[@text='%s']", Constants.TEXT_VIEW, city));
+        return xpath(String.format("//android.widget.TextView[@text='%s']", city));
     }
 }

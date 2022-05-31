@@ -16,13 +16,12 @@ public class AppiumTest extends BaseTest {
 
     private static final ISettingsFile testData = new JsonSettingsFile("testData.json");
     private static final String CITY_TO_CHOOSE = testData.getValue("/cityToChoose").toString();
-    private static final int PRODUCT_TO_CHOOSE = Integer.parseInt(testData.getValue("/productToChoose").toString());
 
     @Test
-    public void secretClothesTest() {
+    public void secretClosetTest() {
         //Step 1 Click on city label
         MainScreen mainScreen = AqualityServices.getScreenFactory().getScreen(MainScreen.class);
-        Assert.assertTrue(mainScreen.state().isDisplayed(), "Main Screen is not displayed");
+        Assert.assertTrue(mainScreen.state().waitForDisplayed(), "Main Screen is not displayed");
         mainScreen.tapChooseCityBtn();
         ChooseCityScreen chooseCityScreen = AqualityServices.getScreenFactory().getScreen(ChooseCityScreen.class);
         Assert.assertTrue(chooseCityScreen.isDoNotShowAgainBtnDisplayed(), "Pop-Up has not shown up");
@@ -43,8 +42,10 @@ public class AppiumTest extends BaseTest {
                 "Required region does not match required value");
 
         //Step 5. Select first item with discount
-        ProductModel productFromMainScreen = mainScreen.getProductInfo(PRODUCT_TO_CHOOSE);
-        mainScreen.tapProductBtn(PRODUCT_TO_CHOOSE);
+        int firstProductWithDiscount = mainScreen.getFirstProductWithDiscount();
+        Assert.assertTrue(firstProductWithDiscount != 0, "There is no products with discount");
+        ProductModel productFromMainScreen = mainScreen.getProductInfo(firstProductWithDiscount);
+        mainScreen.tapProductBtn(firstProductWithDiscount);
         ProductScreen productScreen = AqualityServices.getScreenFactory().getScreen(ProductScreen.class);
         Assert.assertNotNull(productScreen, "Product Screen is not displayed");
 

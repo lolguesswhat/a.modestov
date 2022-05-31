@@ -2,6 +2,7 @@ package screens.MainScreen;
 
 import aquality.appium.mobile.application.PlatformName;
 import aquality.appium.mobile.screens.screenfactory.ScreenType;
+import constants.LocatorsConstants;
 import org.openqa.selenium.By;
 
 import static org.openqa.selenium.By.id;
@@ -30,7 +31,7 @@ public class AndroidMainScreen extends MainScreen {
 
     @Override
     protected By getDiscountLblLoc() {
-        return By.id("tvDiscount");
+        return By.xpath(String.format("//*[@resource-id='%s/tvDiscount']", LocatorsConstants.SECRET_CLOSET_ID));
     }
 
     @Override
