@@ -1,8 +1,7 @@
 package tests;
 
 import adapter.JSONPlaceholder;
-import feign.Feign;
-import feign.gson.GsonDecoder;
+import client.Client;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
@@ -10,7 +9,6 @@ public class BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-        jsonPlaceholder = Feign.builder().decoder(new GsonDecoder()).target(JSONPlaceholder.class,
-                "https://jsonplaceholder.typicode.com/users");
+        jsonPlaceholder = Client.runFeign();
     }
 }
