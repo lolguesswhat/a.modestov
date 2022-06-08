@@ -1,6 +1,5 @@
 package client;
 
-import adapter.JSONPlaceholder;
 import feign.Feign;
 import feign.Logger;
 import feign.gson.GsonDecoder;
@@ -10,16 +9,16 @@ import org.springframework.cloud.openfeign.support.SpringMvcContract;
 
 import static utils.propertiesReader.ReaderGetter.*;
 
-public class Client {
+public class ApiClientGenerator {
 
-    public static JSONPlaceholder runFeign() {
+    public static <T> T getClient(Class<T> tClass) {
         return Feign
                 .builder()
                 .contract(new SpringMvcContract())
                 .logger(new Slf4jLogger())
-                .logLevel(Logger.Level.FULL)
+                .logLevel(Logger.Level.NONE)
                 .decoder(new GsonDecoder())
                 .encoder(new GsonEncoder())
-                .target(JSONPlaceholder.class, getConfigsReader().uri());
+                .target(tClass, getConfigsReader().uri());
     }
 }

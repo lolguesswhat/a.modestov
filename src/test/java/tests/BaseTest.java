@@ -1,14 +1,8 @@
 package tests;
 
-import adapter.JSONPlaceholder;
-import client.Client;
-import org.testng.annotations.BeforeMethod;
+import client.requests.JSONPlaceholder;
+import client.ApiClientGenerator;
 
 public class BaseTest {
-    protected JSONPlaceholder jsonPlaceholder;
-
-    @BeforeMethod
-    public void beforeMethod() {
-        jsonPlaceholder = Client.runFeign();
-    }
+    protected JSONPlaceholder jsonPlaceholder = ApiClientGenerator.getClient(JSONPlaceholder.class);
 }

@@ -1,13 +1,12 @@
 package utils.propertiesReader;
 
+import constants.Paths;
 import org.aeonbits.owner.Config;
 
-@Config.Sources("file:src\\test\\resources\\testData.properties")
+@Config.Sources("file:" + Paths.PATH_TO_RESOURCES + "testData.properties")
 public interface TestDataReader extends Config {
 
     int test2ExpectedUserId();
-
-    int test2ExpectedId();
 
     int test2PostNumber();
 
