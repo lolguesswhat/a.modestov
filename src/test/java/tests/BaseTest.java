@@ -1,0 +1,12 @@
+package tests;
+
+import aquality.appium.mobile.application.AqualityServices;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+
+public class BaseTest {
+    @BeforeMethod
+    public void beforeMethod() {
+        AqualityServices.getApplication();
+    }
+}
